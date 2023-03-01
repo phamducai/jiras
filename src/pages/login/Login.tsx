@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 
 import Loadding from "./componet/Loadding";
+import { LoginAction } from "redux/actions/AuthAction";
 
 const Login: React.FC = () => {
   const dispatch = useDispatch();
@@ -23,8 +24,10 @@ const Login: React.FC = () => {
       email: "",
       passWord: "",
     },
-    onSubmit: async (values) => {
+    onSubmit: async (values: any) => {
+      console.log(values);
       try {
+        // dispatch(LoginAction(values))
         // navigate('/projectmanager')
       } catch (error) {}
     },
