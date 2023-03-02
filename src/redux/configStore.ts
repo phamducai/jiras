@@ -1,12 +1,14 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { Auth } from "./reducers/AuthReducer";
+import { configureStore } from "@reduxjs/toolkit";
 
-const rootReducer = combineReducers({ Auth });
+import AuthSlices from "./auth/AuthSlices";
+import ProjectSlice from "./project/ProjectSlice";
 
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+const store = configureStore({
+  reducer: { AuthSlices, ProjectSlice },
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
+
 export default store;

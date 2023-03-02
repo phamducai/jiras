@@ -1,3 +1,4 @@
+import { login } from "model";
 import { baseService } from "./baseService";
 
 export class QuanLyNguoiDungService extends baseService {
@@ -5,7 +6,7 @@ export class QuanLyNguoiDungService extends baseService {
   constructor() {
     super();
   }
-  dangNhap = (thongTinDangNhap: any) => {
+  dangNhap = (thongTinDangNhap: login) => {
     return this.post(`api/Users/signin`, thongTinDangNhap);
   };
 

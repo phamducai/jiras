@@ -3,13 +3,14 @@ import { Button, Checkbox, Form, Input } from "antd";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
-
 import Loadding from "./componet/Loadding";
-import { LoginAction } from "redux/actions/AuthAction";
-
+import { loginAsync } from "redux/auth/AuthSlices";
+import { login } from "model";
+import { useAppDispatch, useAppSelector } from "redux/hookredux";
 const Login: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const persons = useAppSelector((state) => state);
+  console.log(persons);
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -24,11 +25,10 @@ const Login: React.FC = () => {
       email: "",
       passWord: "",
     },
-    onSubmit: async (values: any) => {
-      console.log(values);
+    onSubmit: async (values: login) => {
       try {
-        // dispatch(LoginAction(values))
-        // navigate('/projectmanager')
+        dispatch(loginAsync(values));
+        navigate("/projectmanager");
       } catch (error) {}
     },
     validationSchema: Yup.object({
