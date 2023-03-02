@@ -10,8 +10,8 @@ export class ProjectService extends baseService {
     return this.get(`/api/Project/getAllProject`);
   };
 
-  dangNhap = (thongTinDangNhap: login) => {
-    return this.post(`api/Users/signin`, thongTinDangNhap);
-  };
+  //   dangNhap = (thongTinDangNhap: login) => {
+  //     return this.post(`api/Users/signin`, thongTinDangNhap);
+  //   };
 }
 export const project = new ProjectService();

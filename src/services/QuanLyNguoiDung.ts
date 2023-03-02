@@ -1,6 +1,6 @@
 import { login } from "model";
 import { baseService } from "./baseService";
-
+import { register } from "model";
 export class QuanLyNguoiDungService extends baseService {
   // eslint-disable-next-line
   constructor() {
@@ -10,7 +10,7 @@ export class QuanLyNguoiDungService extends baseService {
     return this.post(`api/Users/signin`, thongTinDangNhap);
   };
 
-  dangKi = (thongTinDangKi: any) => {
+  dangKi = (thongTinDangKi: register) => {
     return this.post(`/api/Users/signup`, thongTinDangKi);
   };
 }

@@ -18,7 +18,7 @@ export interface Project {
   deleted: boolean | null;
 }
 export interface ProjectState {
-  project: Project | null;
+  project: Project[] | null;
 }
 
 export interface projects {

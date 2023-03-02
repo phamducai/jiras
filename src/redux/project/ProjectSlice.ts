@@ -9,7 +9,7 @@ export const projectAsync = createAsyncThunk(
   async (thunkAPI) => {
     try {
       const result = await project.getAllproject();
-      localStorage.setItem("token", result.data.content.accessToken);
+
       console.log(result);
       return result.data.content;
     } catch (error) {
