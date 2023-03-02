@@ -1,4 +1,4 @@
-import { login } from "model";
+import { login, projects } from "model";
 import { baseService } from "./baseService";
 
 export class ProjectService extends baseService {
@@ -10,8 +10,12 @@ export class ProjectService extends baseService {
     return this.get(`/api/Project/getAllProject`);
   };
 
-  //   dangNhap = (thongTinDangNhap: login) => {
-  //     return this.post(`api/Users/signin`, thongTinDangNhap);
-  //   };
+  getcategory = () => {
+    return this.get(`/api/ProjectCategory`);
+  };
+
+  taoproject = (data: projects) => {
+    return this.post(`/api/Project/createProject`, data);
+  };
 }
 export const project = new ProjectService();

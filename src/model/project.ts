@@ -24,6 +24,6 @@ export interface ProjectState {
 export interface projects {
   projectName: string;
   description: string;
-  categoryId: number;
+  categoryId: number | undefined;
   alias: string;
 }

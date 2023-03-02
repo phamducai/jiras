@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
-  AndroidOutlined,
   AppstoreAddOutlined,
   FileAddOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import hinh from "../../assets/image/check-list.png";
@@ -69,11 +65,6 @@ const ProjectManager: React.FC = () => {
                     Create Project
                   </Link>
                 ),
-              },
-              {
-                key: "3",
-                icon: <AndroidOutlined />,
-                label: "User Profile",
               },
             ]}
           />
