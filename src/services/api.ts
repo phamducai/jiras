@@ -10,7 +10,7 @@ const requester = axios.create({
 requester.interceptors.request.use((req: any) => {
   req.headers = {
     ...req.headers,
-    token: localStorage.getItem("token"),
+    Authorization: "Bearer " + localStorage.getItem("token"),
   };
 
   return req;

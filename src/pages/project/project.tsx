@@ -1,20 +1,34 @@
-import React, { useEffect } from "react";
-import { Button, Table } from "antd";
+import React, { useEffect, useState } from "react";
+import { Button, Drawer, Table } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import { useAppDispatch, useAppSelector } from "redux/hookredux";
 import { projectAsync } from "redux/project/ProjectSlice";
 import { NavLink } from "react-router-dom";
 import { EditOutlined } from "@ant-design/icons";
 
+import UpdateProject from "./UpdateProject";
+
 const Project: React.FC = () => {
-  const { project } = useAppSelector((state) => state.ProjectSlice);
+  const { ALlproject } = useAppSelector((state) => state.ProjectSlice);
+  const [open, setOpen] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState<number | any>(null);
+  const showDrawer = (userId: number) => {
+    setSelectedUserId(userId);
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+
   const dispatch = useAppDispatch();
-  console.log(project);
+
   useEffect(() => {
     dispatch(projectAsync());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const data: any = project;
-  console.log(project);
+  const data: any = ALlproject;
+
   const onChange: TableProps<any>["onChange"] = (
     pagination,
     filters,
@@ -60,14 +74,7 @@ const Project: React.FC = () => {
           <p>
             <Button
               onClick={() => {
-                // dispatch({
-                //   type: actionTypeProject.SET_EDIT_FORMPROJECT,
-                //   payload: {
-                //     fromedit: <FormEditProject />,
-                //     listproject,
-                //     titleDraw: "Edit Project",
-                //   },
-                // });
+                showDrawer(listproject.id);
               }}
               type="primary"
               className="text-xl cursor-pointer "
@@ -87,6 +94,15 @@ const Project: React.FC = () => {
         onChange={onChange}
         rowKey="id"
       />
+      <Drawer
+        width={640}
+        placement="right"
+        closable={false}
+        onClose={onClose}
+        open={open}
+      >
+        <UpdateProject selectedUserId={selectedUserId} />
+      </Drawer>
     </div>
   );
 };

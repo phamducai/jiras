@@ -26,6 +26,7 @@ const CreateProject: React.FC = () => {
   }, []);
   const formik = useFormik<projects>({
     initialValues: {
+      id: "",
       projectName: "",
       description: "",
       categoryId: undefined,

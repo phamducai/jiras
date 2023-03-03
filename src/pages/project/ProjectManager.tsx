@@ -8,15 +8,12 @@ import {
 import { Layout, Menu, theme } from "antd";
 import hinh from "../../assets/image/check-list.png";
 import { Link, Outlet } from "react-router-dom";
-// import DrawerComponent from './DrawerComponent';
-import Loadding from "pages/login/componet/Loadding";
 
-import { useDispatch } from "react-redux";
+import Loadding from "pages/login/componet/Loadding";
 
 const { Header, Sider, Content } = Layout;
 
 const ProjectManager: React.FC = () => {
-  const dispatch = useDispatch();
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -25,8 +22,6 @@ const ProjectManager: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // dispatch(fetchTestTokenActtion());
-    // dispatch(fetchGetAllProjectAction());
     setTimeout(() => {
       setLoading(false);
     }, 500);
@@ -34,7 +29,7 @@ const ProjectManager: React.FC = () => {
 
   return (
     <div>
-      {/* <DrawerComponent /> */}
+
       <Layout>
         <Sider
           trigger={null}
